@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:orientation="horizontal"
+    android:layout_alignParentBottom="true"
+    android:layout_height="70dp"
+    android:paddingHorizontal="12dp"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/border_button_custom">
+    <RelativeLayout
+        android:paddingHorizontal="10dp"
+        android:id="@+id/giohang"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/imv_icon_shop_button"
+            android:layout_width="43dp"
+            android:layout_height="43dp"
+            android:padding="13dp"
+            android:background="@drawable/bgr_ic_item_shop_button"
+            android:src="@drawable/icon_shop_button"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

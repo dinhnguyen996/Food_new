@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:weightSum="10"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/content_layout_frgment3"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bgr_onbroading"
+        android:layout_height="match_parent"
+        android:layout_weight="3.8">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView_cic_onbroad"
+            android:layout_width="280dp"
+            android:layout_marginTop="63dp"
+            android:layout_height="280dp"
+            app:cardCornerRadius="280dp">
+            <ImageView
+                android:layout_width="match_parent"
+                android:background="#F8D57E"
+                android:layout_height="match_parent" />
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_alignEnd="@id/cardView_cic_onbroad"
+            android:layout_marginTop="70dp"
+            android:layout_marginEnd="8dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:cardCornerRadius="60dp">
+            <ImageView
+                android:layout_width="match_parent"
+                android:background="@color/black"
+                android:padding="20dp"
+                android:src="@drawable/ic_check_broading"
+                android:layout_height="match_parent"/>
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/contenttext_layout"
+        android:layout_width="match_parent"
+        android:layout_weight="6.2"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="Certified Chef"
+            android:textSize="24sp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:lines="2"
+            android:textColor="@color/sub_text"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:text="Cook food like your\n personel cheft"
+            android:textSize="24sp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_marginBottom="36dp"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn_started"
+            android:layout_width="300dp"
+            android:layout_gravity="center"
+            android:layout_height="80dp"
+            android:fontFamily="sans-serif"
+            android:backgroundTint="@color/black"
+            android:text="Get Started"
+            android:textSize="23sp"/>
+    </LinearLayout>
+
+
+
+
+
+
+
+    
+
+
+</LinearLayout>

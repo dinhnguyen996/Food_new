@@ -1,0 +1,32 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.FodeNew" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!--màu chính của giao diện-->
+         <item name="colorPrimary">#EC574C</item>
+    </style>
+
+    <style name="Theme.FodeNew" parent="Base.Theme.FodeNew" >
+        <!--lấy từ attr ,sau đó add style bằng style ở dưới "-->
+        <item name="fodeCustomAppbar">@style/custom_text_tablayout</item>
+        <item name="Widget.Fode.Checkbox">@style/custom_check_box</item>
+    </style>
+
+    <!--custom tablayout,sẽ lấy các thuộc tính mong muốn,lấy tên để sử dụng vào xml-->
+    <style name="custom_text_tablayout" parent="Widget.Material3.TabLayout">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textStyle">italic</item>
+        <item name="tabTextColor">#000000</item>
+    </style>
+
+<!--    <color name="my_light_primary">#111111</color>-->
+    <!--sẽ thay đổi các thuộc tính check box mong muốn tại đây ,khi sử dụng trong xml thì style="@style/custom_check_box"-->
+    <style name="custom_check_box" parent="Widget.Material3.CompoundButton.CheckBox">
+        <item name="buttonTint">@color/checkbox</item>
+        <!--color check box sẽ được tạo bằng thẻ selectect trong file color ngang hàng với drable -->
+        <!--màu chính của giao diện-->
+    </style>
+    <color name="my_light_custom_check_box">#EF3729</color>
+    <!--màu đè lên màu chính của giao diện-->
+    <color name="my_light_primary">#E91E63</color>
+</resources>

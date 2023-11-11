@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/custom_checkbox.xml -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="false">
+        <layer-list>
+            <item>
+                <shape>
+                    <solid android:color="#00000000" /> <!-- Màu trong suốt (transparent) khi được chọn -->
+                </shape>
+            </item>
+            <item android:drawable="@drawable/like_checkbox" /> <!-- Thay "your_custom_checkbox" bằng hình ảnh bạn muốn hiển thị khi được chọn -->
+        </layer-list>
+    </item>
+    <item android:state_checked="true">
+        <layer-list>
+            <item>
+                <shape>
+                    <solid android:color="#00000000" /> <!-- Màu trong suốt (transparent) khi không được chọn -->
+                </shape>
+            </item>
+            <item android:drawable="@drawable/dislike_checkbox" /> <!-- Thay "your_custom_checkbox" bằng hình ảnh bạn muốn hiển thị khi không được chọn -->
+        </layer-list>
+    </item>
+</selector>
+

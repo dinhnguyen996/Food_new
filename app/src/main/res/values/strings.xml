@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">fode new</string>
+    <string name="text_login">Login</string>
+    <string name="login_to_app">Login to app</string>
+    <string name="text_facebook">Face Book</string>
+    <string name="text_google">Google</string>
+</resources>

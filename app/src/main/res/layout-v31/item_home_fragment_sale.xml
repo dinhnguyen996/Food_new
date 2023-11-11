@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp"
+    android:background="@drawable/bgr_boder_sale"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:id="@+id/ln_bgr_imagesale"
+        android:background="@drawable/bgr_boder_sale"
+        android:layout_width="match_parent"
+        android:layout_height="160dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:clipToOutline="true"
+            android:outlineProvider="background"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bgr_splash_food"/>
+    </LinearLayout>
+    <CheckBox
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="26dp"
+        android:layout_width="39dp"
+        android:buttonTint="@color/my_light_custom_check_box"
+        android:background="@drawable/bgr_border_like_button"
+        style="@style/custom_check_box"
+        android:button="@drawable/custom_checkbox"
+        android:layout_height="39dp"/>
+
+
+</RelativeLayout>

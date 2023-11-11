@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:id="@+id/full"
+    android:paddingHorizontal="10dp"
+    android:layout_marginStart="-10dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:id="@+id/ln_layout_item"
+        android:layout_width="208dp"
+        android:background="@drawable/border_bgr_item_fode_home"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/imv_item_icon_calori2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/group" />
+
+            <TextView
+                android:id="@+id/tv_item_calories_home_rcv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="5dp"
+                android:layout_toEndOf="@id/imv_item_icon_calori2"
+                android:text="78 Calories"
+                android:textColor="@color/sub_text"
+                android:textSize="12sp" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                style="@style/custom_check_box"
+                android:layout_alignParentEnd="true"
+                android:button="@drawable/custom_checkbox"
+                android:background="@drawable/bacgroud_seach"
+                android:checked="false" />
+
+        </RelativeLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="149dp"
+            android:layout_height="149dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="149dp">
+
+            <ImageView
+                android:id="@+id/imv_home_rcv"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/bg_mbbank" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tv_item_name_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clasico" />
+
+        <TextView
+            android:id="@+id/tv_item_description_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="Mixed Pizza with cheese"
+            android:textColor="@color/sub_text"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_item_price_home"
+            android:layout_width="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:layout_marginTop="10dp"
+            android:text="$7.99" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="-20dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ln_layout_item">
+        <include layout="@layout/layout_detail_button"/>
+    </LinearLayout>
+
+</RelativeLayout>

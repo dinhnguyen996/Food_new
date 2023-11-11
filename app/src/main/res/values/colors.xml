@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="yellow">#FFEB3B</color>
+    <color name="color_tablayout">#EFC151</color>
+    <color name="sub_text">#AFAFAF</color>
+    <color name="color_sub_text">#8F8F8F</color>
+    <color name="color_facebook">#5C75FB</color>
+    <color name="color_google">#FF4E3F</color>
+    <color name="blu">#44D623</color>
+    <color name="gray_light">#FAFBFD</color>
+    <color name="red">#F44336</color>
+    <color name="color_bgr_sale">#8A8686</color>
+    <color name="like_sale">#959C95</color>
+    <color name="check_size">#FFDA80</color>
+    <color name="color_btn_shop_selectsize">#FFDA80</color>
+
+</resources>

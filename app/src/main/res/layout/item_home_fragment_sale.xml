@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingHorizontal="20dp"
+    android:paddingVertical="10dp"
+    android:layout_marginBottom="15dp"
+    android:background="@drawable/bgr_boder_sale"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_img_fode_sale"
+        android:layout_width="match_parent"
+        app:cardCornerRadius="20dp"
+        android:layout_height="160dp">
+        <ImageView
+            android:id="@+id/img_home_sale"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/fode_image_sale"/>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:layout_height="40dp"
+        app:cardCornerRadius="40dp">
+        <CheckBox
+        android:layout_width="match_parent"
+        style="@style/custom_check_box"
+        android:button="@drawable/custom_checkbox"
+        android:layout_height="match_parent"/>
+    </androidx.cardview.widget.CardView>
+    <LinearLayout
+        android:layout_below="@id/cv_img_fode_sale"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_home_sale_saleoff"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Sale Off 30%"
+            android:textSize="24sp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_home_sale_price_old"
+                android:layout_width="wrap_content"
+                android:paddingEnd="20dp"
+                android:layout_height="wrap_content"
+                android:text="$7,90"/>
+            <TextView
+                android:id="@+id/tv_home_sale_price_new"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:text="$7,90"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</RelativeLayout>
