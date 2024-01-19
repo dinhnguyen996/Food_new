@@ -52,6 +52,7 @@ public class FragmentSingUp extends Fragment {
 
         //callapi
         edtsingup_username=view.findViewById(R.id.singup_username);
+        //chuyển bàn phím từ trường đăng nhập tên sang trường đăng nhập email
         edtsingup_username.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {

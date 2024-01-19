@@ -21,7 +21,7 @@ import adapter.AdapterMyCard;
 import myapp.singleton.ModelDetailSingletonMycard;
 import myapp.singleton.SingletonModeldetail;
 
-public class FragmentMycard extends Fragment {
+public class FragmentMycard extends Fragment implements AdapterMyCard.OnDeleteItemClickListener {
     private List<ModelDetailSingletonMycard> listMycard;
     private RecyclerView recyclerView;
     private AdapterMyCard adapterMyCard;
@@ -38,16 +38,32 @@ public class FragmentMycard extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        listMycard= SingletonModeldetail.getInstance().getProductList();//lấy dữ liệu từ singleton
+        listMycard= SingletonModeldetail.getInstance().getLiveDataProductList.getValue();//lấy dữ liệu từ singleton
         recyclerView=view.findViewById(R.id.rcv_fragment_mycard);
         adapterMyCard=new AdapterMyCard(listMycard,getContext());
+        adapterMyCard.setOnDeleteItemClickListener(this);
+        //gán fragemnt là đối tuượng người nghe thao tác cho adapter
+
         recyclerView.setAdapter(adapterMyCard);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         //hiển thị tổng giá tiền tất cả các sp ở recyclerview
         total_price_mycard=view.findViewById(R.id.total_price_mycard);
-        double totalPrice=adapterMyCard.caculateTotalPrice();
+        double totalPrice= AdapterMyCard.caculateTotalPrice();
         total_price_mycard.setText("$"+totalPrice);
 
 
+    }
+//hàm ghi đè inter face
+    @SuppressLint({"NotifyDataSetChanged", "SetTextI18n"})
+    @Override
+    public void onDeleteItemClick(int position) {
+        // Xoá sản phẩm tại vị trí position từ danh sách
+        listMycard.remove(position);
+
+        // Cập nhật RecyclerView
+        adapterMyCard.notifyDataSetChanged();
+        // Cập nhật tổng giá tiền
+        double totalPrice = AdapterMyCard.caculateTotalPrice();
+        total_price_mycard.setText("$" + totalPrice);
     }
 }
