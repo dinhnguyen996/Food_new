@@ -1,6 +1,7 @@
 package fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,7 @@ public class FragmentFoodDetail2 extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        Log.d("ok", "onViewCreated: test git");
         super.onViewCreated(view, savedInstanceState);
         Bundle bundle=getArguments();
         double tvPrice=bundle.getDouble("tvPrice");

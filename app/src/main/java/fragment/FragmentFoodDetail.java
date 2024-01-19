@@ -2,6 +2,7 @@ package fragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import com.squareup.picasso.Picasso;
 import com.techja.fodenew.R;
 import com.techja.fodenew.activity.HomeActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fragment.home_special.FragmentSpecialPopular;
@@ -43,6 +45,7 @@ public class FragmentFoodDetail extends Fragment {
   //set size cho product
     private String sizeProduct;
   private TextView btn_detail_size_S,btn_detail_size_M,btn_detail_size_L;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -73,8 +76,8 @@ public class FragmentFoodDetail extends Fragment {
                         .commit();
             }
         });
-
-        Bundle args = getArguments();//lấy bundle gửi về
+        //lấy bundle gửi về
+        Bundle args = getArguments();
         if (args != null) {
             String name = args.getString("name");
             String decription = args.getString("decription");
@@ -88,31 +91,45 @@ public class FragmentFoodDetail extends Fragment {
             tv_detail_calories.setText(String.valueOf(calories));
             Picasso.get().load(img).into(img_detail);
 
-            //khi click giỏ hàng sẽ add product vào singleton
+//            khi click giỏ hàng sẽ add product vào singleton
             btn_goto_mycard.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //tạo product để add vào singleton
-                    //chú ý lấy quanlity trong onclick vì lấy ngoài sẽ lấy giá trị mặc định
-                    String quality=tv_quality.getText().toString();
-                    //tạo biến để kiểm tra trùng lặp prodcut
-                    boolean checkprodcut=false;//mặc định k trùng lặp
-                    //khởi tạo prodcut mới
-                   modelDetailSingletonMycard=new ModelDetailSingletonMycard(name,decription,img,caloris,priceSinglton,quality,sizeProduct);
-                    SingletonModeldetail singletonModeldetail=SingletonModeldetail.getInstance();
-                    //get list product để so sánh
-                    List<ModelDetailSingletonMycard> listProdcuts=singletonModeldetail.getProductList();
-                    for (ModelDetailSingletonMycard product:listProdcuts){
-                        if (product.getName().equals(modelDetailSingletonMycard.getName()) &&product.getSize().equals(modelDetailSingletonMycard.getSize())){
-                            checkprodcut=true;//trùng set bằng true sau đó thoát vòng for tránh for chạy hết
-                            break;
-                        }
-                    }if (!checkprodcut){
-                        //khi không trùng lặp
-                        singletonModeldetail.addProduct(modelDetailSingletonMycard);
+        @Override
+        public void onClick(View v) {
+            //chú ý lấy quanlity trong onclick vì lấy ngoài sẽ lấy giá trị mặc định
+            String quality=tv_quality.getText().toString();
+            //tạo biến để kiểm tra trùng lặp prodcut
+            boolean checkprodcut=false;//mặc định k trùng lặp
+            //khởi tạo prodcut mới
+
+            modelDetailSingletonMycard=new ModelDetailSingletonMycard(name,decription,img,caloris,priceSinglton,quality,sizeProduct);
+            SingletonModeldetail singletonModeldetail=SingletonModeldetail.getInstance();//
+            //get list product để so sánh
+
+            List<ModelDetailSingletonMycard> listCard =  singletonModeldetail.getLiveDataProductList.getValue();
+            if (listCard== null){
+                Log.d("huhu", "onClick: null");
+            }else {
+                for (ModelDetailSingletonMycard product:listCard){
+                    if (product.getName().equals(modelDetailSingletonMycard.getName()) &&product.getSize().equals(modelDetailSingletonMycard.getSize())){
+                        checkprodcut=true;//trùng set bằng true sau đó thoát vòng for tránh for chạy hết
+                        break;
                     }
                 }
-            });
+            }
+            if (!checkprodcut){
+                //khi không trùng lặp
+               // singletonModeldetail.addProduct(modelDetailSingletonMycard);
+
+                if (listCard == null) {
+                    listCard = new ArrayList<>();
+                }
+                listCard.add(modelDetailSingletonMycard);
+
+                singletonModeldetail.getLiveDataProductList.setValue(listCard);
+            }
+        }
+    });
+
         } else {
             Toast.makeText(getContext(), "không nhận dc dữ liệu", Toast.LENGTH_LONG).show();
         }
@@ -121,7 +138,6 @@ public class FragmentFoodDetail extends Fragment {
 
         //xử lý các nút chọn size và hiển thị giá tiền
         btn_detail_size_S=view.findViewById(R.id.btn_detail_size_S);
-
         if (selectButton){
             //kiểm tra điều kiện nếu chưa click
             tv_detail_price.setText("$"+priceBundle);
@@ -132,7 +148,7 @@ public class FragmentFoodDetail extends Fragment {
         btn_detail_size_S.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectButton=false;//thay đổi đk
+                selectButton=false;//thay đổi điều kiện
                 btn_detail_size_S.setBackgroundResource(R.drawable.button_select_size);
                 btn_detail_size_M.setBackgroundResource(R.drawable.button_select_un_size);
                 btn_detail_size_L.setBackgroundResource(R.drawable.button_select_un_size);
@@ -182,6 +198,7 @@ public class FragmentFoodDetail extends Fragment {
             public void onClick(View v) {
                 count++;
                 tv_quality.setText(String.valueOf(count));
+
             }
         });
         tv_quality_dow.setOnClickListener(new View.OnClickListener() {
@@ -194,4 +211,7 @@ public class FragmentFoodDetail extends Fragment {
             }
         });
     }
+
+
+
 }

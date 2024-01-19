@@ -18,7 +18,7 @@ public interface APIFode {
     //tạo luôn thư viện retrofit ở đây
     //http://ec2-57-180-22-166.ap-northeast-1.compute.amazonaws.com/
     APIFode retrofit=new Retrofit.Builder()
-            .baseUrl("http://ec2-57-180-22-166.ap-northeast-1.compute.amazonaws.com/api/")
+            .baseUrl("http://ec2-13-114-125-145.ap-northeast-1.compute.amazonaws.com/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build().create(APIFode.class);
     //login là đuôi của api cần dùng

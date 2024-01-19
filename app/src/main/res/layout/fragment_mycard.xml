@@ -41,17 +41,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/rcv_fragment_mycard"/>
+
     <LinearLayout
         android:id="@+id/ln_mycart_buynow"
         android:orientation="horizontal"
         android:paddingTop="20dp"
-        android:gravity="center_vertical"
-        android:layout_marginBottom="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="70dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
         <LinearLayout
             android:layout_width="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:layout_alignBottom="@id/rcv_fragment_mycard"
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
@@ -69,11 +72,13 @@
         </LinearLayout>
         <LinearLayout
             android:gravity="end"
-            android:layout_marginBottom="-5dp"
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <include layout="@layout/layout_item_shop_buy_now"/>
         </LinearLayout>
+
+
 
     </LinearLayout>
 

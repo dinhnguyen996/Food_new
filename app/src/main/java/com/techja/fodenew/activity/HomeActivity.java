@@ -1,17 +1,22 @@
 package com.techja.fodenew.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.techja.fodenew.R;
 
+import java.util.List;
+
 import fragment.FragmentMycard;
 import fragment.HomeFragmentSpecail;
+import myapp.singleton.ModelDetailSingletonMycard;
 import myapp.singleton.SingletonModeldetail;
 
 public class HomeActivity extends AppCompatActivity  {
@@ -20,10 +25,13 @@ public class HomeActivity extends AppCompatActivity  {
     private SingletonModeldetail singletonModeldetail;
     private LinearLayout layout_shop_buy_sum;
 
+
     @SuppressLint({"MissingInflatedId", "ClickableViewAccessibility"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_home1);
 
         HomeFragmentSpecail homeFragmentSpecail=new HomeFragmentSpecail();
@@ -32,8 +40,8 @@ public class HomeActivity extends AppCompatActivity  {
                 .replace(R.id.fragment_home_holder,homeFragmentSpecail)
                 .commit();
         //ẩn hiện giỏ hàng tổng
-        layout_shop_buy_sum=findViewById(R.id.layout_shop_buy_sum);
-        //lắng nghe sự kiện click giỏ hàng
+       layout_shop_buy_sum=findViewById(R.id.layout_shop_buy_sum);
+
         layout_shop_buy_sum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,9 +64,35 @@ public class HomeActivity extends AppCompatActivity  {
             }
         });
 
-
         //set số sản phẩm có trong giỏ
         tv_home_quanlity=findViewById(R.id.tv_home_quanlity);
-    }
+        SingletonModeldetail.getInstance().getLiveDataProductList.observe(this, listProductObserver );
 
+    }
+    Observer<List<ModelDetailSingletonMycard>> listProductObserver = new Observer<List<ModelDetailSingletonMycard>>() {
+
+        @Override
+        public void onChanged(List<ModelDetailSingletonMycard> list) {
+
+            Log.d("huhu", "onChanged: " + list.size());
+            if (list.isEmpty()) {
+                layout_shop_buy_sum.setVisibility(View.GONE);
+            } else {
+                layout_shop_buy_sum.setVisibility(View.VISIBLE);
+            }
+        }
+    };
+
+    SingletonModeldetail singletonModeldetail1=SingletonModeldetail.getInstance();
+    List<ModelDetailSingletonMycard> productList =singletonModeldetail1.getProductList();
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("HomeActivity", "onResume: " + productList.size());
+//        if (productList.isEmpty()) {
+////            layout_shop_buy_sum.setVisibility(View.GONE);
+//        } else {
+//            layout_shop_buy_sum.setVisibility(View.VISIBLE);
+//        }
+    }
 }

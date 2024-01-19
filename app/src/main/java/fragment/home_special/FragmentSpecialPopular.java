@@ -31,7 +31,6 @@ import user.product.ApiResponseAllproduct;
 import user.product.Product;
 
 public class FragmentSpecialPopular extends Fragment  {
-    //implements DataInsertionCallback để xử lý việc lấy data api về trước rồi mới lưu data base
     private static final String KEY="PUT TOKEN";
     String TAG = "f1";
     public List<Product> productList;//ds nhận về từ api

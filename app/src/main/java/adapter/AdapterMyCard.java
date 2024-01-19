@@ -30,7 +30,19 @@ public class AdapterMyCard extends RecyclerView.Adapter<AdapterMyCard.ViewHolder
         this.listMycard = listMycard;
         this.context = context;
     }
+    //xoá sản phẩm
+    public interface OnDeleteItemClickListener {
+        void onDeleteItemClick(int position);
+    }
+    private OnDeleteItemClickListener listener;//lưu trữ
 
+    // ...
+
+    public void setOnDeleteItemClickListener(OnDeleteItemClickListener listener) {
+        this.listener = listener;
+        // ở đâu dùng listener thì có thể sử dụng phương thức interface của fragment kế thừa interface
+        //
+    }
 
     @NonNull
     @Override
@@ -100,6 +112,7 @@ public class AdapterMyCard extends RecyclerView.Adapter<AdapterMyCard.ViewHolder
         private TextView tv_quality_dow;
         //get size
         private TextView tv_mycard_size;
+        private ImageView clear_product;//xoá sp
         public ViewHolderMycard(@NonNull View itemView) {
             super(itemView);
             imgMycard=itemView.findViewById(R.id.imv_mycard);
@@ -112,14 +125,25 @@ public class AdapterMyCard extends RecyclerView.Adapter<AdapterMyCard.ViewHolder
             tv_quality_dow=itemView.findViewById(R.id.tv_quality_dow);
             //get size
             tv_mycard_size=itemView.findViewById(R.id.tv_mycard_size);
+            //xoá sp sủ dụng interface
+            clear_product=itemView.findViewById(R.id.clear_product);
+            clear_product.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null) {
+                        listener.onDeleteItemClick(getAdapterPosition());
+                        //người thực hiện thao tác
+                    }
+                }
+            });
         }
     }
     //tính tổng giá tiền
     public static double caculateTotalPrice(){
         SingletonModeldetail singletonModeldetail=SingletonModeldetail.getInstance();
-        List<ModelDetailSingletonMycard> listProdcuts=singletonModeldetail.getProductList();
+        List<ModelDetailSingletonMycard> listCard =  singletonModeldetail.getLiveDataProductList.getValue();
         double total=0.0;
-        for (ModelDetailSingletonMycard product : listProdcuts){
+        for (ModelDetailSingletonMycard product : listCard){
             double price=(double)product.getSelectSize();//ép sang kiểu double
             int quanlity= Integer.parseInt(product.getQuanlity());
             total+=price*quanlity;
