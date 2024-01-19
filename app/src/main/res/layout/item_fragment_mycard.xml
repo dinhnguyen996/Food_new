@@ -64,5 +64,10 @@
         android:layout_height="wrap_content">
         <include layout="@layout/item_quanlity"/>
     </LinearLayout>
+    <ImageView
+        android:id="@+id/clear_product"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@drawable/clear_product"/>
 
 </LinearLayout>

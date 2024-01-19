@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".activity.HomeActivity">
+
     <FrameLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
@@ -17,6 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_centerHorizontal="true"
         android:gravity="center"
+        android:visibility="gone"
         android:layout_marginBottom="30dp"
         android:layout_height="wrap_content"
         android:orientation="vertical">
